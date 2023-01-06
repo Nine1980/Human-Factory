@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        background-image: url(color.png);
+        font-family: Arial, sans-serif;
+        background-repeat: no-repeat;
+        background-size: 1950px 1000px;
+      }
+      img.mainmenu {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        width: 200px;
+      }
+      img.mainmenu:hover {
+        filter: brightness(120%);
+        cursor: pointer;
+      }
+      img.play {
+        position: absolute;
+        bottom: 130px;
+        left: 840px;
+        width: 300px;
+      }
+      img.play:hover {
+        filter: brightness(120%);
+        cursor: pointer;
+      }
+    </style>
+    <script>
+         function menu() {
+        window.open("/menu.html");
+        window.close();
+      }
+      function play() {
+        window.open("color1.html");
+        window.close();
+      }
+    </script>
+  </head>
+  <body>
+    <audio loop autoplay>
+      <source src="/37 - Love.mp3" type="audio/mp3" />
+    </audio>
+    <img src="mainmenu.png" class="mainmenu" onclick="menu()" />
+    <img src="/play.png" class="play" onclick="play()" />
+  </body>
+</html>

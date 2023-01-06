@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+        body{
+            background-image: url(screenBG.png);
+            font-family: Arial, sans-serif;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+      img.back {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        width: 200px;
+      }
+      img.back:hover {
+        filter: brightness(120%);
+        cursor: pointer;
+      }
+      img.Icon{
+        width: 200px;
+        margin: 0px 100px;
+      }
+      img.Icon:hover {
+        filter: brightness(120%);
+        cursor: pointer;
+      }
+      p{
+        font-size: 20pt;
+      }
+    </style>
+
+    <script>
+        function lastPage() {
+        window.open("second.html");
+        window.close();
+      }
+      function millionGame() {
+        window.open("color.html");
+        window.close();
+      }
+      function mathGame(){
+        window.open("math.html");
+        window.close();
+      }
+      function animalGame(){
+        window.open("animal.html");
+        window.close();
+      }
+    </script>
+  </head>
+
+  <body>
+    <audio loop autoplay>
+      <source src="/073 - Teatime Joy.mp3" type="audio/mp3" />
+    </audio>
+    <img src="back.png" class="back" onclick="lastPage()" />
+    <div>
+        <table style="margin-top: 400px;margin-left: 350px;">
+            <tr>
+                <th><img src="math.png" class="Icon" onclick="mathGame()"></th>
+                <th><img src="duolingo.png" class="Icon" onclick="animalGame()"></th>
+                <th><img src="Artroom.png" class="Icon" onclick="millionGame()" ></th>
+            </tr>
+            <tr>
+                <th>
+                    <p>Math</p>
+                </th>
+                <th>
+                    <p>Animal</p>
+                </th>
+                <th>
+                  <p>Color</p>
+                </th>
+            </tr>
+        </table>
+        
+        
+        
+    </div>
+  </body>
+</html>

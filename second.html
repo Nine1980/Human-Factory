@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        background-image: url(Room.png);
+        font-family: Arial, sans-serif;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      img.bussinessman {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+      }
+      img.bussinessman:hover {
+        content: url(scarybussinessman.png);
+      }
+      img.computer-desk:hover {
+        filter: brightness(120%);
+        cursor: pointer;
+      }
+      img.back {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        width: 200px;
+      }
+      img.back:hover {
+        filter: brightness(120%);
+        cursor: pointer;
+      }
+      img.rope {
+        position: absolute;
+        right: 700px;
+        width: 300px;
+      }
+      img.rope:hover {
+        filter: brightness(50%);
+        cursor: pointer;
+      }
+    </style>
+
+    <script>
+      function lastPage() {
+        window.open("First.html");
+        window.close();
+      }
+      function nextPage() {
+        window.open("menu.html");
+        window.close();
+      }
+      function end(){
+        window.open("end.html");
+        window.close();
+      }
+    </script>
+  </head>
+
+  <body>
+    <!-- <img src="rope.png" class="rope" onclick="end()"> -->
+    <audio loop autoplay>
+      <source src="/069 - A Place to Rest.mp3" type="audio/mp3" />
+    </audio>
+    <img src="back.png" class="back" onclick="lastPage()" />
+    <img
+      src="ComputerDesk.png"
+      class="computer-desk"
+      onclick="nextPage()"
+      style="width: 500px; margin-top: 540px; margin-left: 200px"
+    />
+    <img src="bussinessman.png" class="bussinessman" />
+  </body>
+</html>

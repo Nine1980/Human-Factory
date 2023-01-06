@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Math Game</title>
+  <style>
+    body {
+        background-image: url(animalWin.png);
+        font-family: Arial, sans-serif;
+        background-repeat: no-repeat;
+        background-size: 1950px 1000px;
+      }
+      img.mainmenu {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        width: 200px;
+      }
+      img.mainmenu:hover {
+        filter: brightness(120%);
+        cursor: pointer;
+      }
+      img.retry {
+        position: absolute;
+        bottom: 100px;
+        left: 840px;
+        width: 300px;
+      }
+      img.retry:hover {
+        filter: brightness(120%);
+        cursor: pointer;
+      }
+  </style>
+  <script>
+    function menu() {
+        window.open("/menu.html");
+        window.close();
+      }
+      function retry() {
+        window.open("animal.html");
+        window.close();
+      }
+  </script>
+</head>
+<body>
+  <audio loop autoplay>
+    <source src="/073 - Teatime Joy.mp3" type="audio/mp3" />
+  </audio>
+  <img src="/mainmenu.png" class="mainmenu" onclick="menu()" />
+  <img src="/Retry.png" class="retry" onclick="retry()">
+</body>
+</html>

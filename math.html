@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      function menu() {
+        window.open("/menu.html");
+        window.close();
+      }
+      function play() {
+        window.open("math1.html");
+        window.close();
+      }
+    </script>
+    <style>
+      body {
+        background-image: url(SchoolBG1.png);
+        font-family: Arial, sans-serif;
+        background-repeat: no-repeat;
+        background-size: 1950px 1000px;
+      }
+      .icon {
+        height: 300px;
+        width: 300px;
+        padding-top: 100px;
+      }
+      img.mainmenu {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        width: 200px;
+      }
+      img.play {
+        width: 200px;
+      }
+      img.play:hover {
+        filter: brightness(120%);
+        cursor: pointer;
+      }
+      img.mainmenu:hover {
+        filter: brightness(120%);
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <audio loop autoplay>
+      <source src="/26 - Univir Settlement.mp3" type="audio/mp3" />
+    </audio>
+    <img src="/mainmenu.png" class="mainmenu" onclick="menu()" />
+    <div>
+      <form
+        action=""
+        style="padding-top: 90px; padding-left: 200px; padding-right: 150px"
+      >
+        <fieldset style="background-color: darkolivegreen">
+          <div style="text-align: center; color: whitesmoke">
+            <h1 style="font-size: 40pt">Quick Math</h1>
+            <img src="/math.png" class="icon" />
+          </div>
+          <div
+            style="text-align: center; padding-top: 100px; padding-bottom: 50px"
+          >
+            <img src="/play.png" class="play" onclick="play()" />
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </body>
+</html>

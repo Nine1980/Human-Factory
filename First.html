@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Human factory</title>
+    <style>
+      body {
+        background-image: url(titleBG.png);
+        font-family: Arial, sans-serif;
+      }
+      img.play:hover {
+        filter: brightness(120%);
+        cursor: pointer;
+      }
+    </style>
+
+    <script>
+      function nextPage() {
+        window.open("second.html");
+        window.close();
+      }
+    </script>
+  </head>
+
+  <body>
+    <audio loop autoplay>
+      <source src="/12 A Home To All.mp3" type="audio/mp3" />
+    </audio>
+    <div style="text-align: center">
+      <img src="mainIcon.png" style="width: 400px; height: auto" />
+    </div>
+    <div style="text-align: center">
+      <img src="title.png" style="width: 1000px; height: auto" />
+    </div>
+    <div class="brightness" style="text-align: center;">
+      <img class="play"
+        src="play.png"
+        onclick="nextPage()"
+        style="margin-top: 200px; width: 300px; height: auto;cursor: pointer;"
+      />
+    </div>
+  </body>
+</html>

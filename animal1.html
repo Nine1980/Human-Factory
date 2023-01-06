@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Animal Guessing Game</title>
+    <style>
+      body {
+        background-image: url(animalBG.png);
+        font-family: Arial, sans-serif;
+        background-repeat: no-repeat;
+        background-size: 1950px 1000px;
+      }
+      .choice {
+        display: inline-block;
+        border: 1px solid black;
+        padding: 10px;
+        margin: 40px;
+        cursor: pointer;
+        background-color: chocolate;
+        width: 300px;
+        font-size: 50pt;
+      }
+      img.mainmenu {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        width: 200px;
+      }
+      img.mainmenu:hover {
+        filter: brightness(120%);
+        cursor: pointer;
+      }
+      .text {
+        position: absolute;
+        bottom: 120px;
+        left: 380px;
+      }
+      .center {
+        margin-left: auto;
+        margin-right: auto;
+        width: 800px;
+      }
+      p {
+        font-size: 26pt;
+        text-align: center;
+      }
+      .result{
+        margin-left: 530px;
+      }
+    </style>
+    <script>
+      function menu() {
+        window.open("/menu.html");
+        window.close();
+      }
+    </script>
+  </head>
+  <body>
+    <audio loop autoplay>
+      <source src="/113 - Id (Purpose).mp3" type="audio/mp3" />
+    </audio>
+
+    <form
+      action=""
+      style="margin-top: 115px; margin-left: 240px; margin-right: 210px"
+    >
+      <fieldset style="height: 750px; text-align: center">
+        <div>
+          <table class="center">
+            <tr>
+              <th>
+                <p id="correct">Correct : 0</p>
+              </th>
+              <th>
+                <p id="wrong">Wrong : 0</p>
+              </th>
+            </tr>
+          </table>
+        </div style="text-align:center">
+        <img src="mainmenu.png" class="mainmenu" onclick="menu()" />
+        <img style="width: 250px; margin-top: 100px" id="animal-image" />
+        <div class="text">
+          <div id="choices" style="font-size: 26pt; text-align: center">
+            <div class="choice" onclick="checkAnswer(this)"></div>
+            <div class="choice" onclick="checkAnswer(this)"></div>
+            <div class="choice" onclick="checkAnswer(this)"></div>
+          </div>
+          <div style="text-align: center;">
+            <p id="result" class="result"></p>
+          </div>
+          
+          <p id="result1" style="display: none"></p>
+        </div>
+      </fieldset>
+    </form>
+    <script>
+      var questionIndex = 0;
+
+      var questions = [
+        {
+          answer: "Cat",
+          choices: ["Dog", "Cat", "Tiger"],
+          image: "/Cat.png",
+        },
+        {
+          answer: "Bear",
+          choices: ["Elephant", "Bear", "Monkey"],
+          image: "/Bear.png",
+        },
+        {
+          answer: "Tiger",
+          choices: ["Cat", "Wolf", "Tiger"],
+          image: "/Tiger.png",
+        },
+        {
+          answer: "Wolf",
+          choices: ["Dog", "Monkey", "Wolf"],
+          image: "/Wolf.png",
+        },
+        {
+          answer: "Dog",
+          choices: ["Dog", "Cat", "Lion"],
+          image: "/Dog.png",
+        },
+      ];
+
+      const index = Math.floor(Math.random() * questions.length);
+      const question = questions[index];
+
+      document.getElementById("animal-image").src = question.image;
+      document.getElementById("choices").innerHTML = "";
+      for (const choice of question.choices) {
+        document.getElementById(
+          "choices"
+        ).innerHTML += `<div class="choice" onclick="checkAnswer(this)">${choice}</div>`;
+      }
+      document.getElementById("result1").innerText = question.answer;
+
+      function selectNewQuestion() {
+        const index = Math.floor(Math.random() * questions.length);
+        const question = questions[index];
+        document.getElementById("animal-image").src = question.image;
+        document.getElementById("choices").innerHTML = "";
+        for (const choice of question.choices) {
+          document.getElementById("choices").innerHTML += `
+      <div class="choice" onclick="checkAnswer(this)">${choice}</div>
+    `;
+        }
+        document.getElementById("result1").innerText = question.answer;
+      }
+
+      function checkAnswer(element) {
+        document.getElementById("choices").innerHTML = "";
+        var aAudio = new Audio("Correct.mp4");
+        var bAudio = new Audio("Wrong.mp4");
+        const choice = element.innerText;
+
+        if (choice == document.getElementById("result1").innerText) {
+          document.getElementById("choices").innerHTML =""
+          document.getElementById("result").innerHTML = "Correct!!";
+          correctAnswers++;
+          aAudio.play();
+          document.getElementById("correct").innerText =
+            "Correct : " + correctAnswers;
+        } else {
+          document.getElementById("choices").innerHTML =""
+          document.getElementById("result").innerHTML = "Wrong..";
+          incorrectAnswers++;
+          bAudio.play();
+          document.getElementById("wrong").innerText =
+            "Wrong : " + incorrectAnswers;
+        }
+
+        setTimeout(function () {
+          document.getElementById("result").innerHTML = "";
+          if (correctAnswers == 10) {
+            window.open("animalWin.html");
+            window.close();
+          } else if (incorrectAnswers == 3) {
+            window.open("animalLose.html");
+            window.close();
+          }
+        }, 1000);
+
+        setTimeout(function () {
+          selectNewQuestion();
+        }, 1000);
+      }
+      let correctAnswers = 0;
+      let incorrectAnswers = 0;
+    </script>
+  </body>
+</html>

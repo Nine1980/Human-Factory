@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      function menu() {
+        window.open("/menu.html");
+        window.close("math1.html");
+      }
+    </script>
+    <style>
+      body {
+        background-image: url(SchoolBG1.png);
+        font-family: Arial, sans-serif;
+        background-repeat: no-repeat;
+        background-size: 1950px 1000px;
+      }
+      img.mainmenu {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        width: 200px;
+      }
+      img.mainmenu:hover {
+        filter: brightness(120%);
+        cursor: pointer;
+      }
+      .center {
+  margin-left: auto;
+  margin-right: auto;
+  width: 800px;
+}
+img.submit{
+  height: 100px;
+  margin-top: 50px;
+}
+img.submit:hover{
+  filter: brightness(120%);
+        cursor: pointer;
+}
+p{
+  font-size: 30pt;
+}
+h1{
+  position: absolute;
+  left: 800px;
+  top:150px;
+}
+    </style>
+  </head>
+  <body>
+    <audio loop autoplay>
+      <source src="/26 - Univir Settlement.mp3" type="audio/mp3" />
+    </audio>
+    <img src="/mainmenu.png" class="mainmenu" onclick="menu()" />
+    <form
+      action=""
+      style="padding-top: 90px; padding-left: 200px; padding-right: 150px"
+    >
+      <fieldset
+        style="
+          height: 770px;
+          text-align: center;
+        "
+      >
+      <div>
+        <table class="center">
+          <tr>
+            <th>
+              <p id="correct">Correct : 0</p>
+            </th>
+            <th>
+              <p id="wrong">Wrong : 0</p>
+            </th>
+          </tr>
+        </table>
+      </div>
+          <h1 id="question" style="font-size: 150pt;"></h1>
+        <div style="padding-top: 300px;">
+          <p>Your Answer: <input style="height: 30px;" type="text" id="answer" /></p>
+        </div>
+        <div><img src="/Submit.png" class="submit" onclick="checkAnswer()"></img></div>
+        <div><p id="result"></p></div>
+        <script>
+          function makeQuestion() {
+            const x = Math.floor(Math.random() * 10);
+            const y = Math.floor(Math.random() * 10);
+            const op = Math.random() < 0.5 ? "+" : "-";
+            return ` ${x} ${op} ${y} `;
+          }
+          function checkAnswer() {
+            var aAudio = new Audio('Correct.mp4');
+        var bAudio = new Audio('Wrong.mp4');
+            document.getElementById("answer").disabled=true;
+            const question = document.getElementById("question").innerText;
+            const answer = document.getElementById("answer").value;
+            const result = eval(question) == answer;
+            const resultText = result ? "Correct!" : "Incorrect";
+            document.getElementById("result").innerHTML = resultText;
+
+            if (result) {
+              aAudio.play();
+              correctAnswers++;
+              document.getElementById("correct").innerText ="Correct : "+correctAnswers;
+            } else {
+              bAudio.play();
+              incorrectAnswers++;
+              document.getElementById("wrong").innerText ="Wrong : "+incorrectAnswers;
+            }
+
+            if (correctAnswers == 10) {
+              window.open("mathWin.html");
+              window.close();
+            } else if (incorrectAnswers == 3) {
+              window.open("mathLose.html");
+              window.close();
+            }
+
+            setTimeout(function () {
+              document.getElementById("result").innerText = "";
+              document.getElementById("question").innerText = makeQuestion();
+              document.getElementById("answer").disabled=false;
+              document.getElementById("answer").value = "";
+            }, 1000);
+            console.log(correctAnswers);
+            console.log(incorrectAnswers);
+          }
+          let correctAnswers = 0;
+          let incorrectAnswers = 0;
+          document.getElementById("question").innerText = makeQuestion();
+        </script>
+      </fieldset>
+    </form>
+  </body>
+</html>
