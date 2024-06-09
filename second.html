@@ -49,7 +49,7 @@
 
     <script>
       function lastPage() {
-        window.open("First.html");
+        window.open("index.html");
         window.close();
       }
       function nextPage() {
@@ -65,9 +65,13 @@
 
   <body>
     <img src="rope.png" class="rope" onclick="end()">
-    <audio loop autoplay>
+    <!-- <audio loop autoplay>
       <source src="/069 - A Place to Rest.mp3" type="audio/mp3" />
-    </audio>
+    </audio> -->
+    <script>
+      var audio = new Audio('https://github.com/Nine1980/Human-Factory/raw/master/069%20-%20A%20Place%20to%20Rest.mp3');
+      audio.play();
+  </script>
     <img src="back.png" class="back" onclick="lastPage()" />
     <img
       src="ComputerDesk.png"
