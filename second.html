@@ -13,6 +13,7 @@
         bottom: 0;
         right: 0;
       }
+      
       img.bussinessman:hover {
         content: url(scarybussinessman.png);
       }
@@ -34,10 +35,15 @@
         position: absolute;
         right: 700px;
         width: 300px;
+        animation: fadeIn 300s forwards;
       }
       img.rope:hover {
         filter: brightness(50%);
         cursor: pointer;
+      }
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
       }
     </style>
 
@@ -58,7 +64,7 @@
   </head>
 
   <body>
-    <!-- <img src="rope.png" class="rope" onclick="end()"> -->
+    <img src="rope.png" class="rope" onclick="end()">
     <audio loop autoplay>
       <source src="/069 - A Place to Rest.mp3" type="audio/mp3" />
     </audio>
